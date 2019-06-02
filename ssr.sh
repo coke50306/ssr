@@ -761,7 +761,7 @@ Install_Libsodium(){
 		echo -e "${Info} 下载..."
 		wget  --no-check-certificate -N "https://github.com/jedisct1/libsodium/archive/${Libsodiumr_ver}-RELEASE.tar.gz"
 		echo -e "${Info} 解压..."
-		tar -xzf libsodium-${Libsodiumr_ver}.tar.gz && cd libsodium-${Libsodiumr_ver}
+		tar -xzf ${Libsodiumr_ver}-RELEASE.tar.gz && cd ${Libsodiumr_ver}-RELEASE
 		echo -e "${Info} 编译安装..."
 		./configure --disable-maintainer-mode && make -j2 && make install
 		echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
@@ -772,12 +772,12 @@ Install_Libsodium(){
 		echo -e "${Info} 下载..."
 		wget  --no-check-certificate -N "https://github.com/jedisct1/libsodium/archive/${Libsodiumr_ver}-RELEASE.tar.gz"
 		echo -e "${Info} 解压..."
-		tar -xzf libsodium-${Libsodiumr_ver}.tar.gz && cd libsodium-${Libsodiumr_ver}
+		tar -xzf ${Libsodiumr_ver}-RELEASE.tar.gz && cd ${Libsodiumr_ver}-RELEASE
 		echo -e "${Info} 编译安装..."
 		./configure --disable-maintainer-mode && make -j2 && make install
 	fi
 	ldconfig
-	cd .. && rm -rf libsodium-${Libsodiumr_ver}.tar.gz && rm -rf libsodium-${Libsodiumr_ver}
+	cd .. && rm -rf ${Libsodiumr_ver}-RELEASE.tar.gz && rm -rf ${Libsodiumr_ver}-RELEASE
 	[[ ! -e ${Libsodiumr_file} ]] && echo -e "${Error} libsodium 安装失败 !" && exit 1
 	echo && echo -e "${Info} libsodium 安装成功 !" && echo
 }
