@@ -19,7 +19,7 @@ config_file="${ssr_folder}/config.json"
 config_folder="/etc/shadowsocksr"
 config_user_file="${config_folder}/user-config.json"
 ssr_log_file="${ssr_ss_file}/ssserver.log"
-r_file="/usr/local/lib/libsodium.so"
+Libsodiumr_file="/usr/local/lib/libsodium.so"
 Libsodiumr_ver_backup="1.0.13"
 Server_Speeder_file="/serverspeeder/bin/serverSpeeder.sh"
 LotServer_file="/appex/bin/serverSpeeder.sh"
@@ -741,7 +741,7 @@ Check_Libsodium_ver(){
 	Libsodiumr_ver=$(wget -qO- "https://github.com/jedisct1/libsodium/tags"|grep "/jedisct1/libsodium/releases/tag/"|head -1|sed -r 's/.*tag\/(.+)\">.*/\1/')
 	[[ -z ${Libsodiumr_ver} ]] && Libsodiumr_ver=${Libsodiumr_ver_backup}
 	echo -e "${Info} libsodium 最新版本为 ${Green_font_prefix}${Libsodiumr_ver}${Font_color_suffix} !"
-}https://github.com/jedisct1/libsodium/archive/1.0.18.tar.gz
+}
 Install_Libsodium(){
 	if [[ -e ${Libsodiumr_file} ]]; then
 		echo -e "${Error} libsodium 已安装 , 是否覆盖安装(更新)？[y/N]"
@@ -1450,7 +1450,7 @@ menu_status(){
 }
 check_sys
 [[ ${release} != "debian" ]] && [[ ${release} != "ubuntu" ]] && [[ ${release} != "centos" ]] && echo -e "${Error} 本脚本不支持当前系统 ${release} !" && exit 1
-echo -e "  ShadowsocksR 一键管理脚本 0+r製作 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
+echo -e "  ShadowsocksR 一键管理脚本 0+r維護 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
   ---- Toyo | doub.io/ss-jc42 ----
 
   ${Green_font_prefix}1.${Font_color_suffix} 安装 ShadowsocksR
