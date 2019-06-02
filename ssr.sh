@@ -10,7 +10,7 @@ export PATH
 #	Blog: https://doub.io/ss-jc42/
 #=================================================
 
-sh_ver="2.0.39"
+sh_ver="2.0.40"
 filepath=$(cd "$(dirname "$0")"; pwd)
 file=$(echo -e "${filepath}"|awk -F "$0" '{print $1}')
 ssr_folder="/usr/local/shadowsocksr"
@@ -741,7 +741,7 @@ Check_Libsodium_ver(){
 	Libsodiumr_ver=$(wget -qO- "https://github.com/jedisct1/libsodium/tags"|grep "/jedisct1/libsodium/releases/tag/"|head -1|sed -r 's/.*tag\/(.+)\">.*/\1/')
 	[[ -z ${Libsodiumr_ver} ]] && Libsodiumr_ver=${Libsodiumr_ver_backup}
 	echo -e "${Info} libsodium 最新版本为 ${Green_font_prefix}${Libsodiumr_ver}${Font_color_suffix} !"
-}
+}https://github.com/jedisct1/libsodium/archive/1.0.18.tar.gz
 Install_Libsodium(){
 	if [[ -e ${Libsodiumr_file} ]]; then
 		echo -e "${Error} libsodium 已安装 , 是否覆盖安装(更新)？[y/N]"
@@ -761,7 +761,7 @@ Install_Libsodium(){
 		echo -e "${Info} 下载..."
 		wget  --no-check-certificate -N "https://github.com/jedisct1/libsodium/archive/${Libsodiumr_ver}.tar.gz"
 		echo -e "${Info} 解压..."
-		tar -xzf ${Libsodiumr_ver}.tar.gz && cd ${Libsodiumr_ver}
+		tar -xzf libsodium-${Libsodiumr_ver}.tar.gz && cd libsodium-${Libsodiumr_ver}
 		echo -e "${Info} 编译安装..."
 		./configure --disable-maintainer-mode && make -j2 && make install
 		echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
@@ -772,12 +772,12 @@ Install_Libsodium(){
 		echo -e "${Info} 下载..."
 		wget  --no-check-certificate -N "https://github.com/jedisct1/libsodium/archive/${Libsodiumr_ver}.tar.gz"
 		echo -e "${Info} 解压..."
-		tar -xzf ${Libsodiumr_ver}.tar.gz && cd ${Libsodiumr_ver}
+		tar -xzf libsodium-${Libsodiumr_ver}.tar.gz && cd libsodium-${Libsodiumr_ver}
 		echo -e "${Info} 编译安装..."
 		./configure --disable-maintainer-mode && make -j2 && make install
 	fi
 	ldconfig
-	cd .. && rm -rf ${Libsodiumr_ver}.tar.gz && rm -rf ${Libsodiumr_ver}
+	cd .. && rm -rf libsodium-${Libsodiumr_ver}.tar.gz && rm -rf libsodium-${Libsodiumr_ver}
 	[[ ! -e ${Libsodiumr_file} ]] && echo -e "${Error} libsodium 安装失败 !" && exit 1
 	echo && echo -e "${Info} libsodium 安装成功 !" && echo
 }
